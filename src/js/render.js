@@ -4,10 +4,9 @@ function renderCountryDetails([country]) {
   const { flags, name, capital, population, languages } = country;
   const langString = Object.values(languages).join(', ');
 
-  clearCountryList();
-  refs.countryList.insertAdjacentHTML(
+  refs.countryInfo.insertAdjacentHTML(
     'beforeend',
-    `<li style="background-color: #fff; border: 1px solid #ccc; border-radius: 5px; box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); margin-bottom: 20px; overflow: hidden; padding: 20px;">
+    `<div style="background-color: #fff; border: 1px solid #ccc; border-radius: 5px; box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); margin-bottom: 20px; overflow: hidden; padding: 20px;">
       <div style="display: flex; align-items: center; gap: 20px;">
         <div style="border: 1px solid #ccc; border-radius: 50%; overflow: hidden;">
           <img src="${flags.svg}" alt="flag" width="150" height="150">
@@ -19,7 +18,7 @@ function renderCountryDetails([country]) {
           <p style="font-size: 18px; margin: 10px 0 0;">Languages: <span style="font-weight: bold;">${langString}</span></p>
         </div>
       </div>
-    </li>`
+    </div>`
   );
 }
 
@@ -34,8 +33,4 @@ function renderCountryList(countries) {
   refs.countryList.insertAdjacentHTML('beforeend', items);
 }
 
-function clearCountryList() {
-  refs.countryList.innerHTML = '';
-}
-
-export { renderCountryDetails, renderCountryList, clearCountryList };
+export { renderCountryDetails, renderCountryList };
